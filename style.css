@@ -11,12 +11,25 @@ body {
   color: #333;
   line-height: 1.6;
   padding: 0 20px;
-  transition: all 0.4s ease;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 header {
   text-align: center;
-  padding: 2rem 0;
+  padding: 2.5rem 0 1.5rem;
+  background: linear-gradient(to right, #007acc, #66ccff);
+  color: white;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+}
+
+#typing-text {
+  font-size: 1rem;
+  font-style: italic;
+  color: #e0e0e0;
 }
 
 nav {
@@ -24,14 +37,15 @@ nav {
 }
 
 nav a {
-  margin: 0 10px;
+  margin: 0 12px;
   text-decoration: none;
-  color: #007acc;
+  color: white;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #005580;
+  color: #ffdd57;
 }
 
 #theme-toggle {
@@ -39,21 +53,23 @@ nav a:hover {
   padding: 8px 15px;
   cursor: pointer;
   border: none;
-  background: #007acc;
-  color: white;
-  border-radius: 5px;
+  background: #ffcc00;
+  color: black;
+  border-radius: 6px;
   font-size: 14px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 #theme-toggle:hover {
-  background: #005580;
+  background: #ffaa00;
 }
 
 section {
   padding: 2rem 0;
   max-width: 800px;
   margin: auto;
+  opacity: 0;
+  transform: translateY(30px);
   transition: all 0.6s ease;
 }
 
@@ -63,18 +79,20 @@ section {
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 ul {
   list-style: disc inside;
+  margin-top: 0.5rem;
 }
 
 .project {
-  background: #f9f9f9;
-  padding: 1rem;
+  background: #f0f0f0;
+  padding: 1rem 1.2rem;
   margin-top: 1rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease;
 }
 
@@ -85,34 +103,41 @@ ul {
 footer {
   text-align: center;
   margin-top: 2rem;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #888;
 }
 
-/* Dark Mode */
+/* DARK MODE */
 body.dark {
   background-color: #121212;
   color: #f0f0f0;
 }
 
+.dark header {
+  background: linear-gradient(to right, #222, #444);
+  color: #f0f0f0;
+}
+
 .dark nav a {
-  color: #66b2ff;
+  color: #66ccff;
 }
 
 .dark nav a:hover {
-  color: #3399ff;
+  color: #ffcc66;
 }
 
 .dark .project {
   background-color: #1e1e1e;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.05);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
 }
 
 .dark #theme-toggle {
-  background: #333;
-  color: #fff;
+  background: #444;
+  color: white;
 }
 
 .dark #theme-toggle:hover {
-  background: #555;
+  background: #666;
 }
