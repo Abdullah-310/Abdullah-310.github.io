@@ -1,49 +1,115 @@
-/* Theme Styles */
-body.dark-theme {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  padding: 0 20px;
+  transition: all 0.4s ease;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+nav {
+  margin: 1rem 0;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #005580;
+}
+
+#theme-toggle {
+  margin-top: 1rem;
+  padding: 8px 15px;
+  cursor: pointer;
+  border: none;
+  background: #007acc;
+  color: white;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: #005580;
+}
+
+section {
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: auto;
+  transition: all 0.6s ease;
+}
+
+.profile-img {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: disc inside;
+}
+
+.project {
+  background: #f9f9f9;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+}
+
+/* Dark Mode */
+body.dark {
   background-color: #121212;
   color: #f0f0f0;
 }
-body.dark-theme a {
-  color: #ffa500;
+
+.dark nav a {
+  color: #66b2ff;
 }
 
-/* Scroll Animation */
-.hidden {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-}
-.visible {
-  opacity: 1;
-  transform: translateY(0);
+.dark nav a:hover {
+  color: #3399ff;
 }
 
-/* Skill Box Styles */
-.skill-box {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin: 8px 0;
-  display: inline-block;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.dark .project {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.05);
 }
 
-/* Theme toggle button */
-.theme-settings {
-  position: fixed;
-  top: 10px;
-  right: 15px;
-}
-#theme-toggle {
-  padding: 6px 12px;
-  border-radius: 5px;
-  border: none;
+.dark #theme-toggle {
   background: #333;
   color: #fff;
-  cursor: pointer;
 }
-body.dark-theme #theme-toggle {
-  background: #fff;
-  color: #000;
+
+.dark #theme-toggle:hover {
+  background: #555;
 }
