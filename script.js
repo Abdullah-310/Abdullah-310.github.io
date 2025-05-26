@@ -1,45 +1,59 @@
-// Typing animation
-const typingTarget = document.getElementById("typing-text");
-const text = "Mechanical Engineering Student | Problem Solver";
-let idx = 0;
-function typeEffect() {
-  if (idx < text.length) {
-    typingTarget.innerHTML += text.charAt(idx);
-    idx++;
-    setTimeout(typeEffect, 50);
-  }
-}
-typeEffect();
+// === Beast Portfolio Script ===
 
-// Scroll animation
-const sections = document.querySelectorAll("section");
-function revealSections() {
-  const trigger = window.innerHeight * 0.85;
-  sections.forEach((section) => {
-    const boxTop = section.getBoundingClientRect().top;
-    if (boxTop < trigger) {
-      section.style.opacity = 1;
-      section.style.transform = "translateY(0)";
-    }
-  });
-}
-window.addEventListener("scroll", revealSections);
-window.addEventListener("load", revealSections);
-
-// Theme toggle
-const themeBtn = document.getElementById("theme-button");
+// Theme toggle with dropdown
+const themeToggleBtn = document.getElementById("theme-toggle");
 const themeOptions = document.getElementById("theme-options");
 const lightBtn = document.getElementById("light-mode");
 const darkBtn = document.getElementById("dark-mode");
 
-themeBtn.addEventListener("click", () => {
-  themeOptions.classList.toggle("hidden");
+// Show/hide theme options
+themeToggleBtn.addEventListener("click", () => {
+  themeOptions.classList.toggle("show");
 });
 
+// Apply light mode
 lightBtn.addEventListener("click", () => {
   document.body.classList.remove("dark");
+  localStorage.setItem("theme", "light");
 });
 
+// Apply dark mode
 darkBtn.addEventListener("click", () => {
   document.body.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+});
+
+// Load saved theme
+window.addEventListener("load", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  }
+});
+
+// Smooth scroll for navigation links
+const navLinks = document.querySelectorAll("nav a[href^='#']");
+navLinks.forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+// Fade-in animation on scroll
+const fadeElems = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+fadeElems.forEach(el => {
+  observer.observe(el);
 });
