@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="theme-wrapper">
+    <button id="theme-button">⚙️ Theme Settings</button>
+    <div id="theme-options" class="hidden">
+      <button id="light-mode"> Light Mode</button>
+      <button id="dark-mode"> Dark Mode</button>
+    </div>
+  </div>
+
   <header>
     <h1>Abdullah Al Mahdi</h1>
     <p id="typing-text"></p>
@@ -16,12 +24,13 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button id="theme-toggle">🌙 Dark Mode</button>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <img src="assets/profile.jpg" alt="Abdullah Al Mahdi" class="profile-img" />
+    <div class="profile-container">
+      <img src="assets/profile.jpg" alt="Abdullah Al Mahdi" class="profile-img" />
+    </div>
     <p>I’m a mechanical engineering student interested in automation, CAD design, and coding. Passionate about building and optimizing systems.</p>
   </section>
 
@@ -33,16 +42,20 @@
       <p><strong>Tech:</strong> Arduino, C++, Sensor IO</p>
       <a href="#">View Code</a>
     </div>
-    <!-- Add more projects if you like -->
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>C, C++, Python</li>
-      <li>SolidWorks, AutoCAD</li>
-      <li>HTML, CSS, Git</li>
-    </ul>
+    <div class="skills-grid">
+      <div class="skill-box">C</div>
+      <div class="skill-box">C++</div>
+      <div class="skill-box">Python</div>
+      <div class="skill-box">SolidWorks</div>
+      <div class="skill-box">AutoCAD</div>
+      <div class="skill-box">HTML</div>
+      <div class="skill-box">CSS</div>
+      <div class="skill-box">Git</div>
+    </div>
   </section>
 
   <section id="contact">
