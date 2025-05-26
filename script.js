@@ -1,9 +1,16 @@
-// ========== Theme Toggle ==========
-document.getElementById("theme-toggle").addEventListener("click", function () {
+// Theme toggle
+const themeBtn = document.getElementById("theme-toggle");
+
+themeBtn.addEventListener("click", function () {
   document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    themeBtn.textContent = "☀️ Light Mode";
+  } else {
+    themeBtn.textContent = "🌙 Dark Mode";
+  }
 });
 
-// ========== Typing Text ==========
+// Typing effect
 const text = "Mechanical Engineering Student | Problem Solver";
 let index = 0;
 function typeWriter() {
@@ -15,7 +22,7 @@ function typeWriter() {
 }
 typeWriter();
 
-// ========== Scroll Reveal ==========
+// Scroll reveal
 const sections = document.querySelectorAll("section");
 const revealOnScroll = () => {
   const trigger = window.innerHeight * 0.8;
@@ -29,8 +36,6 @@ const revealOnScroll = () => {
 };
 
 window.addEventListener("scroll", revealOnScroll);
-
-// Initial styles for animation
 sections.forEach(sec => {
   sec.style.opacity = 0;
   sec.style.transform = "translateY(30px)";
