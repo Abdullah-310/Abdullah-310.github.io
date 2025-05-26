@@ -1,4 +1,4 @@
-// === Beast Portfolio Script ===
+// === Beast Portfolio Script (Enhanced) ===
 
 // Theme toggle with dropdown
 const themeToggleBtn = document.getElementById("theme-toggle");
@@ -43,7 +43,7 @@ navLinks.forEach(link => {
 });
 
 // Fade-in animation on scroll
-const fadeElems = document.querySelectorAll("section");
+const fadeElems = document.querySelectorAll("section, header, footer, .project, .skill-box");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -56,4 +56,35 @@ const observer = new IntersectionObserver(entries => {
 
 fadeElems.forEach(el => {
   observer.observe(el);
+});
+
+// Typing effect for intro
+function typeEffect(element, speed) {
+  const text = element.innerHTML;
+  element.innerHTML = "";
+  let i = 0;
+  const timer = setInterval(() => {
+    if (i < text.length) {
+      element.append(text.charAt(i));
+      i++;
+    } else {
+      clearInterval(timer);
+    }
+  }, speed);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const title = document.querySelector("header h1");
+  if (title) typeEffect(title, 80);
+});
+
+// Hover float animation
+const floatElems = document.querySelectorAll(".project, .skill-box, nav a, button, .theme-box");
+floatElems.forEach(elem => {
+  elem.addEventListener("mouseenter", () => {
+    elem.classList.add("float-up");
+  });
+  elem.addEventListener("mouseleave", () => {
+    elem.classList.remove("float-up");
+  });
 });
