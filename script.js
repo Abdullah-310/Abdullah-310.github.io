@@ -1,52 +1,38 @@
-// Theme Toggle
-const toggleBtn = document.getElementById('theme-toggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
+// ========== Theme Toggle ==========
+document.getElementById("theme-toggle").addEventListener("click", function () {
+  document.body.classList.toggle("dark");
 });
 
-// Typing Intro Animation
-document.addEventListener('DOMContentLoaded', () => {
-  const headerText = document.querySelector("header h1");
-  const text = headerText.textContent;
-  headerText.textContent = "";
-  let i = 0;
-
-  function typeWriter() {
-    if (i < text.length) {
-      headerText.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
-    }
+// ========== Typing Text ==========
+const text = "Mechanical Engineering Student | Problem Solver";
+let index = 0;
+function typeWriter() {
+  if (index < text.length) {
+    document.getElementById("typing-text").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 60);
   }
+}
+typeWriter();
 
-  typeWriter();
-});
-
-// Scroll Reveal Animation
-const revealElements = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+// ========== Scroll Reveal ==========
+const sections = document.querySelectorAll("section");
+const revealOnScroll = () => {
+  const trigger = window.innerHeight * 0.8;
+  sections.forEach(sec => {
+    const boxTop = sec.getBoundingClientRect().top;
+    if (boxTop < trigger) {
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
     }
   });
-}, {
-  threshold: 0.2
-});
+};
 
-revealElements.forEach(section => {
-  section.classList.add("hidden");
-  observer.observe(section);
-});
+window.addEventListener("scroll", revealOnScroll);
 
-// Hover Animations
-const skillBoxes = document.querySelectorAll('.skill-box');
-skillBoxes.forEach(box => {
-  box.addEventListener('mouseenter', () => {
-    box.style.transform = "scale(1.05)";
-    box.style.transition = "transform 0.3s ease";
-  });
-  box.addEventListener('mouseleave', () => {
-    box.style.transform = "scale(1)";
-  });
+// Initial styles for animation
+sections.forEach(sec => {
+  sec.style.opacity = 0;
+  sec.style.transform = "translateY(30px)";
+  sec.style.transition = "all 0.6s ease";
 });
