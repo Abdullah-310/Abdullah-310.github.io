@@ -1,32 +1,18 @@
-// Theme toggle button
-const themeBtn = document.getElementById("theme-toggle");
-
-themeBtn.addEventListener("click", function () {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    themeBtn.textContent = "☀️ Light Mode";
-  } else {
-    themeBtn.textContent = "🌙 Dark Mode";
-  }
-});
-
-// Typing effect for title subtitle
+// Typing animation
 const typingTarget = document.getElementById("typing-text");
 const text = "Mechanical Engineering Student | Problem Solver";
 let idx = 0;
-
 function typeEffect() {
   if (idx < text.length) {
     typingTarget.innerHTML += text.charAt(idx);
     idx++;
-    setTimeout(typeEffect, 60);
+    setTimeout(typeEffect, 50);
   }
 }
 typeEffect();
 
-// Scroll fade-in
+// Scroll animation
 const sections = document.querySelectorAll("section");
-
 function revealSections() {
   const trigger = window.innerHeight * 0.85;
   sections.forEach((section) => {
@@ -37,6 +23,23 @@ function revealSections() {
     }
   });
 }
-
 window.addEventListener("scroll", revealSections);
 window.addEventListener("load", revealSections);
+
+// Theme toggle
+const themeBtn = document.getElementById("theme-button");
+const themeOptions = document.getElementById("theme-options");
+const lightBtn = document.getElementById("light-mode");
+const darkBtn = document.getElementById("dark-mode");
+
+themeBtn.addEventListener("click", () => {
+  themeOptions.classList.toggle("hidden");
+});
+
+lightBtn.addEventListener("click", () => {
+  document.body.classList.remove("dark");
+});
+
+darkBtn.addEventListener("click", () => {
+  document.body.classList.add("dark");
+});
