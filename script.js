@@ -1,49 +1,29 @@
-// === Beast Portfolio Script (Enhanced) ===
-
-// Theme toggle with dropdown
-const themeToggleBtn = document.getElementById("theme-toggle");
-const themeOptions = document.getElementById("theme-options");
-const lightBtn = document.getElementById("light-mode");
-const darkBtn = document.getElementById("dark-mode");
-
-// Show/hide theme options
-themeToggleBtn.addEventListener("click", () => {
-  themeOptions.classList.toggle("show");
+// Theme Toggle
+const toggleBtn = document.getElementById('theme-toggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
 });
 
-// Apply light mode
-lightBtn.addEventListener("click", () => {
-  document.body.classList.remove("dark");
-  localStorage.setItem("theme", "light");
-});
+// Typing Intro Animation
+document.addEventListener('DOMContentLoaded', () => {
+  const headerText = document.querySelector("header h1");
+  const text = headerText.textContent;
+  headerText.textContent = "";
+  let i = 0;
 
-// Apply dark mode
-darkBtn.addEventListener("click", () => {
-  document.body.classList.add("dark");
-  localStorage.setItem("theme", "dark");
-});
-
-// Load saved theme
-window.addEventListener("load", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
+  function typeWriter() {
+    if (i < text.length) {
+      headerText.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
   }
+
+  typeWriter();
 });
 
-// Smooth scroll for navigation links
-const navLinks = document.querySelectorAll("nav a[href^='#']");
-navLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-});
-
-// Fade-in animation on scroll
-const fadeElems = document.querySelectorAll("section, header, footer, .project, .skill-box");
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -51,40 +31,22 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, {
-  threshold: 0.1
+  threshold: 0.2
 });
 
-fadeElems.forEach(el => {
-  observer.observe(el);
+revealElements.forEach(section => {
+  section.classList.add("hidden");
+  observer.observe(section);
 });
 
-// Typing effect for intro
-function typeEffect(element, speed) {
-  const text = element.innerHTML;
-  element.innerHTML = "";
-  let i = 0;
-  const timer = setInterval(() => {
-    if (i < text.length) {
-      element.append(text.charAt(i));
-      i++;
-    } else {
-      clearInterval(timer);
-    }
-  }, speed);
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const title = document.querySelector("header h1");
-  if (title) typeEffect(title, 80);
-});
-
-// Hover float animation
-const floatElems = document.querySelectorAll(".project, .skill-box, nav a, button, .theme-box");
-floatElems.forEach(elem => {
-  elem.addEventListener("mouseenter", () => {
-    elem.classList.add("float-up");
+// Hover Animations
+const skillBoxes = document.querySelectorAll('.skill-box');
+skillBoxes.forEach(box => {
+  box.addEventListener('mouseenter', () => {
+    box.style.transform = "scale(1.05)";
+    box.style.transition = "transform 0.3s ease";
   });
-  elem.addEventListener("mouseleave", () => {
-    elem.classList.remove("float-up");
+  box.addEventListener('mouseleave', () => {
+    box.style.transform = "scale(1)";
   });
 });
