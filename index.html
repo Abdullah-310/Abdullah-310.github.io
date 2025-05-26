@@ -2,31 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abdullah Al Mahdi - Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="theme-settings">
-    <button id="theme-toggle">🌓 Change Theme</button>
-  </div>
-
   <header>
     <h1>Abdullah Al Mahdi</h1>
-    <p>Mechanical Engineering Student | Problem Solver</p>
+    <p id="typing-text"></p>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button id="theme-toggle">🌙 Toggle Theme</button>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <div class="profile-container">
-      <img src="assets/profile.jpg" alt="Abdullah Al Mahdi" class="profile-pic">
-    </div>
+    <img src="assets/profile.jpg" alt="Abdullah Al Mahdi" class="profile-img">
     <p>I’m a mechanical engineering student interested in automation, CAD design, and coding. Passionate about building and optimizing systems.</p>
   </section>
 
@@ -38,19 +33,22 @@
       <p><strong>Tech:</strong> Arduino, C++, Sensor IO</p>
       <a href="#">View Code</a>
     </div>
+    <!-- Add more projects here -->
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <div class="skill-box">C, C++, Python</div>
-    <div class="skill-box">SolidWorks, AutoCAD</div>
-    <div class="skill-box">HTML, CSS, Git</div>
+    <ul>
+      <li>C, C++, Python</li>
+      <li>SolidWorks, AutoCAD</li>
+      <li>HTML, CSS, Git</li>
+    </ul>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: tibbulkalb@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/Abdullah-310">github.com/Abdullah-310</a></p>
+    <p>GitHub: <a href="https://github.com/Abdullah-310" target="_blank">github.com/Abdullah-310</a></p>
   </section>
 
   <footer>
